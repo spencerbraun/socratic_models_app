@@ -27,7 +27,7 @@ class FaissIndex:
             self.embedding_size = self.index.d
             if os.path.exists(faiss_index_location + ".ids"):
                 with open(faiss_index_location + ".ids") as f:
-                    self.id_list = f.read().split()
+                    self.id_list = f.read().split("\n")
             elif self.index.ntotal > 0:
                 raise ValueError("Index file exists but ids file does not")
             else:
@@ -71,9 +71,7 @@ class FaissIndex:
         return D, I, labels
 
     def reset(self):
-        """
-        Empty faiss index and id list. Note: deletes saved files as well
-        """
+
         if self.index:
             self.index.reset()
         self.id_list = []
@@ -87,3 +85,46 @@ class FaissIndex:
         if self.index:
             return self.index.ntotal
         return 0
+
+
+class VectorSearch:
+    def __init__(self):
+        self.places = self.load("places")
+        self.objects = self.load("objects")
+
+    def load(self, index_name):
+        return FaissIndex(
+            faiss_index_location=f"faiss_indices/{index_name}.index",
+        )
+
+    def top_places(self, query_vec, k=5):
+        if isinstance(query_vec, torch.Tensor):
+            query_vec = query_vec.detach().numpy()
+        *_, results = self.places.search(query_vec, k=k)
+        return results
+
+    def top_objects(self, query_vec, k=5):
+        if isinstance(query_vec, torch.Tensor):
+            query_vec = query_vec.detach().numpy()
+        *_, results = self.objects.search(query_vec, k=k)
+        return results
+
+    def prompt_activities(self, query_vec, k=5):
+        places = self.top_places(query_vec, k=k)
+        objects = self.top_objects(query_vec, k=k)
+        place_str = f"Places: {', '.join(places)}. "
+        object_str = f"Objects: {', '.join(objects)}. "
+        act_str = "Activities: "
+
+        return place_str + object_str + act_str
+
+    def prompt_summary(self, query_vec, activity, k=5):
+
+        places = self.top_places(query_vec, k=k)
+        objects = self.top_objects(query_vec, k=k)
+
+        place_string = f"I am in a {', '.join(places)}. "
+        objects_string = f"I see a {', '.join(objects)}. "
+        activities_string = f"I am {activity}. "
+        question = "Question: What am I doing? Answer: I am most likely"
+        return place_string + objects_string + activities_string + question
