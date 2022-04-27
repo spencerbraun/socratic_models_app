@@ -58,13 +58,17 @@ class CLIP:
         self.model = CLIPModel.from_pretrained(model_id)
         self.processor = CLIPProcessor.from_pretrained(model_id)
 
-    def from_file(self, image_path):
-        image = Image.open(image_path)
-        return self.from_image(image)
-
-    def from_image(self, image):
+    def get_image_emb(self, image):
+        if isinstance(image, str):
+            image = Image.open(image)
         image_inputs = self.processor(images=image, return_tensors="pt", padding=True)
         out = self.model.get_image_features(**image_inputs)
+
+        return out.detach().numpy()
+
+    def get_text_emb(self, text):
+        text_inputs = self.processor(text=text, return_tensors="pt", padding=True)
+        out = self.model.get_text_features(**text_inputs)
 
         return out.detach().numpy()
 

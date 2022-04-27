@@ -120,8 +120,8 @@ class VectorSearch:
         zs = place_str + object_str + act_str
 
         example = (
-            "Places: kitchen, restaurant. Objects: croissant, coffee. "
-            "Activities: eating, breakfast.\n "
+            "Places: kitchen, stove top. Objects: croissant, coffee maker. "
+            "Activities: eating, making breakfast, grinding coffee, boiling water, drinking coffee.\n "
         )
         fs = example + place_str + object_str + act_str
         if one_shot:

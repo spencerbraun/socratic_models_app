@@ -4,7 +4,6 @@ from datetime import datetime
 from pathlib import Path
 
 import cv2
-import numpy as np
 import yt_dlp
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
@@ -64,22 +63,25 @@ def clean_response(act_text):
     if not text_split:
         text_split = act_text
 
-    first_sent = sent_tokenize(text_split)[0]
+    try:
+        first_sent = sent_tokenize(text_split)[0]
+    except:
+        first_sent = text_split
 
     list_split = first_sent.split(",")
     no_spaces = list(map(str.strip, list_split))
 
-    return list(map(strip_punctuation, no_spaces))
+    return list(map(strip_punctuation, no_spaces))[:3]
 
 
 def log_activity_from_image(image_file, vlm, llm, vs):
-    img_embed = vlm.from_file(image_file)
+    img_embed = vlm.get_image_emb(image_file)
     zs, fs = vs.prompt_activities(img_embed, 3, one_shot=True)
 
     kwargs = {
-        "top_p": 0.95,
+        "top_p": 0.9,
         "temperature": 1.2,
-        "max_new_tokens": 15,
+        "max_new_tokens": 20,
         "return_full_text": False,
     }
     activities_raw = llm(fs, **kwargs)
@@ -96,5 +98,10 @@ def generate_log(log_path, images_path, vlm, llm):
 
         for image in tqdm(sorted(glob.glob(f"{images_path}/*.jpg"))):
             video_name, timestamp, frame = Path(image).stem.split("_")
-            log = log_activity_from_image(image, vlm, llm, vs)
-            f.write(f"{frame}:{log}\n")
+            try:
+                log = log_activity_from_image(image, vlm, llm, vs)
+                print(log)
+                f.write(f"{frame}:{log}\n")
+            except Exception as e:
+                print(e)
+                continue
