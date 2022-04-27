@@ -8,14 +8,17 @@ import torch
 import transformers
 from transformers import CLIPProcessor, CLIPModel
 
+from embeddings import logger
+
 with open("hf_api.key") as f:
     HF_TOKEN = f.read().strip()
 
 
 class HuggingFaceHosted:
-    def __init__(self, model_id, api_token):
+    def __init__(self, model_id, api_token, verbose=False):
         self.model_id = model_id
         self.api_token = api_token
+        self.verbose = verbose
 
     def query(self, data):
         headers = {"Authorization": f"Bearer {self.api_token}"}
@@ -23,8 +26,13 @@ class HuggingFaceHosted:
         response = requests.request("POST", API_URL, headers=headers, data=data)
         return json.loads(response.content.decode("utf-8"))
 
-    def text_generation(self, text):
-        payload = {"inputs": text}
+    def text_generation(self, text, **parameters):
+        payload = {
+            "inputs": text,
+            "parameters": parameters,
+        }
+        if self.verbose:
+            logger.info(payload)
         data = json.dumps(payload)
         return self.query(data)
 
@@ -45,7 +53,7 @@ class HuggingFaceHosted:
 
 
 class CLIP:
-    def __init__(self, model_id):
+    def __init__(self, model_id="openai/clip-vit-large-patch14"):
         self.model_id = model_id
         self.model = CLIPModel.from_pretrained(model_id)
         self.processor = CLIPProcessor.from_pretrained(model_id)
@@ -60,10 +68,18 @@ class CLIP:
 
         return out.detach().numpy()
 
+    def __repr__(self):
+        return f"CLIP Local <{self.model_id}>"
+
 
 class GPTJ(HuggingFaceHosted):
-    def __init__(self, model_id="EleutherAI/gpt-j-6B", api_token=HF_TOKEN):
-        super().__init__(model_id, api_token)
+    def __init__(
+        self, model_id="EleutherAI/gpt-j-6B", api_token=HF_TOKEN, verbose=False
+    ):
+        super().__init__(model_id, api_token, verbose=verbose)
 
-    def __call__(self, text):
-        return self.text_generation(text)
+    def __call__(self, text, **parameters):
+        return self.text_generation(text, **parameters)
+
+    def __repr__(self):
+        return f"GPTJ Hosted <{self.model_id}>"

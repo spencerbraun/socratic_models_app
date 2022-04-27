@@ -2,6 +2,7 @@ import logging
 import os
 
 import faiss
+import torch
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -109,14 +110,24 @@ class VectorSearch:
         *_, results = self.objects.search(query_vec, k=k)
         return results
 
-    def prompt_activities(self, query_vec, k=5):
+    def prompt_activities(self, query_vec, k=5, one_shot=False):
         places = self.top_places(query_vec, k=k)
         objects = self.top_objects(query_vec, k=k)
         place_str = f"Places: {', '.join(places)}. "
         object_str = f"Objects: {', '.join(objects)}. "
         act_str = "Activities: "
 
-        return place_str + object_str + act_str
+        zs = place_str + object_str + act_str
+
+        example = (
+            "Places: kitchen, restaurant. Objects: croissant, coffee. "
+            "Activities: eating, breakfast.\n "
+        )
+        fs = example + place_str + object_str + act_str
+        if one_shot:
+            return (zs, fs)
+
+        return (zs,)
 
     def prompt_summary(self, query_vec, activity, k=5):
 
