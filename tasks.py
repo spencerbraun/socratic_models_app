@@ -56,7 +56,7 @@ class Summary:
         for prompt in prompts:
             results.append(self.llm(prompt)[0]["generated_text"])
 
-        return dict(zip(prompts, results))
+        return zip(prompts, results)
 
     def generate_summaries(self):
         history_proc = self.parse_history()

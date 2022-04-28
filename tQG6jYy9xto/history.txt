@@ -1,0 +1,93 @@
+0:0:Places: office cubicles, office, computer room. Objects: Desk, Computer monitor, Laptop. Activities: working, studying, relaxing
+200:200:Places: berth, playroom, pub indoor. Objects: Toy, Bidet, Bed. Activities: playing video games
+400:400:Places: snowfield, inn outdoor, arena performance. Objects: Watch, Pastry, Drink. Activities: watching, eating, drinking
+600:600:Places: canal urban, crosswalk, street. Objects: Bicycle, Stationary bicycle, Bicycle helmet. Activities: crosswalk, bicycle, street
+800:800:Places: ice skating rink outdoor, snowfield, promenade. Objects: Snowman, Stairs, Segway. Activities: ice skating, snowman, segway
+1000:1000:Places: ice skating rink outdoor, atrium public, playground. Objects: Skateboard, Horizontal bar, Hammer. Activities: skateboarding, atrium public, playground
+1200:1200:Places: computer room, corridor, classroom. Objects: Door, Door handle, Office building. Activities: taking a photo, writing a report, and using the computer
+1400:1400:Places: corridor, elevator door, server room. Objects: Door, Door handle, Mirror. Activities: door, door handle, mirror
+1600:1600:Places: office cubicles, computer room, office. Objects: Desk, Office building, Computer monitor. Activities: working at a desk
+1800:1800:Places: computer room, office cubicles, office. Objects: Desk, Chair, Office building. Activities: work, study, relax
+2000:2000:Places: computer room, office, office cubicles. Objects: Desk, Chair, Stool. Activities: work, sit, computer
+2200:2200:Places: office, home office, computer room. Objects: Desk, Laptop, Tablet computer. Activities: work, study, play
+2400:2400:Places: corridor, elevator door, office. Objects: Tap, Light switch, Door handle. Activities: taking a shower, using the bathroom, and working in the office
+2600:2600:Places: office cubicles, office, office building. Objects: Office building, Desk, Flying disc. Activities: flying disc, office building, desk
+2800:2800:Places: office, office cubicles, corridor. Objects: Office building, Desk, Tap. Activities: drinking coffee, using the restroom, and writing
+3000:3000:Places: kitchen, bathroom, restaurant kitchen. Objects: Countertop, Tap, Cooking spray. Activities: cleaning, cooking, and eating
+3200:3200:Places: utility room, kitchen, restaurant kitchen. Objects: Sink, Cupboard, Kitchen appliance. Activities: cleaning, cooking, washing
+3400:3400:Places: coffee shop, computer room, bar. Objects: Coffeemaker, Coffee cup, Coffee. Activities: drinking coffee, working on the computer, and talking with friends
+3600:3600:Places: office cubicles, office, computer room. Objects: Office building, Desk, Stairs. Activities: working at a desk
+3800:3800:Places: elevator shaft, office cubicles, server room. Objects: Desk, Stairs, Treadmill. Activities: workout, read, sleep
+4000:4000:Places: basement, clean room, living room. Objects: House, Closet, Oboe. Activities: playing oboe, cleaning, and organizing
+4200:4200:Places: coffee shop, youth hostel, computer room. Objects: Coffeemaker, Coffee cup, Kitchen appliance. Activities: drinking coffee, using a computer, and making coffee
+4400:4400:Places: restaurant kitchen, office cubicles, conference room. Objects: Desk, Filing cabinet, Office building. Activities: work, study, and eat
+4600:4600:Places: balcony exterior, balcony interior, fire escape. Objects: Bottle opener, Wine rack, Porch. Activities: drinking wine, hanging out on the porch, and opening a bottle of wine
+4800:4800:Places: restaurant kitchen, kitchen, utility room. Objects: Kitchen appliance, Oven, Kitchenware. Activities: cooking, cleaning, shopping
+5000:5000:Places: coffee shop, kitchen, computer room. Objects: Coffeemaker, Coffee cup, Kitchen appliance. Activities: drinking coffee, making coffee, using coffee maker
+5200:5200:Places: artists loft, computer room, conference room. Objects: Furniture, Office building, Desk. Activities: work, study, create
+5400:5400:Places: office cubicles, computer room, office. Objects: Desk, Office building, Furniture. Activities: work, study, and relax
+5600:5600:Places: office cubicles, office, computer room. Objects: Desk, Computer monitor, Bear. Activities: working, sleeping, eating
+5800:5800:Places: office, computer room, office cubicles. Objects: Computer monitor, Computer mouse, Laptop. Activities: working on a computer, listening to music, watching a movie
+6000:6000:Places: office cubicles, office, computer room. Objects: Desk, Computer monitor, Tie. Activities: working at a desk, using a computer, and tying a tie
+6200:6200:Places: computer room, conference room, server room. Objects: Desk, Chair, Computer monitor. Activities: work, study, relax
+6400:6400:Places: office, conference room, reception. Objects: Desk, Microphone, Fedora. Activities: meeting, recording, speaking
+6600:6600:Places: conference room, office, office cubicles. Objects: Desk, Chair, Watch. Activities: meeting, working, reading
+6800:6800:Places: computer room, conference room, office. Objects: Desk, Computer mouse, Computer monitor. Activities: working at a computer, talking on the phone, and eating
+7000:7000:Places: office, computer room, home office. Objects: Laptop, Desk, Tablet computer. Activities: work, study, play
+7200:7200:Places: conference room, home office, computer room. Objects: Computer monitor, Tablet computer, Desk. Activities: work, study, relax
+7400:7400:Places: home office, office, computer room. Objects: Computer mouse, Desk, Coffee table. Activities: work, read, watch tv
+7600:7600:Places: computer room, office, home office. Objects: Desk, Laptop, Coffee table. Activities: work, read, watch tv
+7800:7800:Places: office cubicles, office, computer room. Objects: Desk, Office building, Stationary bicycle. Activities: working, sleeping, exercising
+8000:8000:Places: lobby, reception, youth hostel. Objects: Office building, Coffeemaker, Desk. Activities: drinking coffee, working at a desk, and chatting with friends
+8200:8200:Places: restaurant kitchen, kitchen, pantry. Objects: Plastic bag, Food, Bread. Activities: baking bread, cooking food, shopping
+8400:8400:Places: kitchen, pantry, restaurant kitchen. Objects: Vegetable, Sandwich, Bread. Activities: making a sandwich, putting vegetables on a sandwich, and making a salad
+8600:8600:Places: utility room, clean room, balcony interior. Objects: Refrigerator, Washing machine, Window. Activities: cleaning, washing machine, refrigerator
+8800:8800:Places: fastfood restaurant, restaurant, sushi bar. Objects: Paper towel, Burrito, Croissant. Activities: eat, drink, clean
+9000:9000:Places: fastfood restaurant, restaurant, supermarket. Objects: Plastic bag, Paper towel, Burrito. Activities: wrapping burrito, putting paper towel in plastic bag, putting plastic bag in paper towel
+9200:9200:Places: fastfood restaurant, restaurant, food court. Objects: Bread, Fast food, Submarine sandwich. Activities: making a sandwich, eating a sandwich, and fast food
+9400:9400:Places: fastfood restaurant, diner outdoor, restaurant. Objects: Sandwich, Submarine sandwich, Human arm. Activities: making a sandwich, eating a sandwich, and eating at a restaurant
+9600:9600:Places: fastfood restaurant, restaurant, dam. Objects: Submarine sandwich, Sandwich, Croissant. Activities: eat, drink, walk
+9800:9800:Places: fastfood restaurant, restaurant, food court. Objects: Submarine sandwich, Bread, Sandwich. Activities: making a sandwich, eating a sandwich, and ordering a sandwich
+10000:10000:Places: fastfood restaurant, diner outdoor, restaurant. Objects: Fast food, Submarine sandwich, Sandwich. Activities: eat, sandwich, fast food
+10200:10200:Places: fastfood restaurant, restaurant, diner outdoor. Objects: Submarine sandwich, Sandwich, Fast food. Activities: making a sandwich, eating a sandwich, and eating fast food
+10400:10400:Places: coffee shop, kitchen, restaurant kitchen. Objects: Waste container, Coffeemaker, Barrel. Activities: drinking coffee, making coffee, cleaning
+10600:10600:Places: lobby, elevator lobby, playroom. Objects: Office building, Desk, Stairs. Activities: playing video games
+10800:10800:Places: office cubicles, computer room, office. Objects: Computer mouse, Desk, Human arm. Activities: using the computer, typing, and using the mouse
+11000:11000:Places: art school, staircase, iceberg. Objects: Ski, Oboe, Stairs. Activities: skiing, oboe, stairs
+11200:11200:Places: elevator door, elevator lobby, doorway outdoor. Objects: Door handle, Door, Mule. Activities: door handle, door, mule
+11400:11400:Places: canal urban, youth hostel, crevasse. Objects: Stationary bicycle, Unicycle, Bicycle. Activities: bicycle, unicycle, urban
+11600:11600:Places: ice skating rink outdoor, landing deck, promenade. Objects: Aircraft, Horizontal bar, Remote control. Activities: ice skating, landing deck, promenade
+11800:11800:Places: ice skating rink outdoor, promenade, canal urban. Objects: Stationary bicycle, Segway, Wheelchair. Activities: segway
+12000:12000:Places: promenade, pier, windmill. Objects: Dagger, Segway, Saxophone. Activities: playing saxophone, segway, walking on the promenade
+12200:12200:Places: sauna, harbor, lighthouse. Objects: Tomato, Submarine, Lobster. Activities: swimming, sailing, and fishing
+12400:12400:Places: ice skating rink outdoor, sky, inn outdoor. Objects: Parachute, Submarine, Boat. Activities: ice skating, boating, parachuting
+12600:12600:Places: berth, harbor, boat deck. Objects: Barge, Boat, Watercraft. Activities: sailing, fishing, and crabbing
+12800:12800:Places: promenade, canal urban, pier. Objects: Person, Turkey, Human beard. Activities: walking, fishing, sightseeing
+13000:13000:Places: dam, ice skating rink outdoor, berth. Objects: Bidet, Submarine, Man. Activities: ice skating, berth, dam
+13200:13200:Places: inn outdoor, berth, dam. Objects: Tablet computer, Watch, Human arm. Activities: watching tv, reading a book, and eating
+13400:13400:Places: home office, sandbox, library outdoor. Objects: Computer keyboard, Tablet computer, Laptop. Activities: playing video games, reading a book, working on a computer
+13600:13600:Places: kennel outdoor, ice skating rink outdoor, ski slope. Objects: Skateboard, Snowboard, Segway. Activities: skateboard, snowboard, segway
+13800:13800:Places: canal urban, harbor, promenade. Objects: Watercraft, Unicycle, Balance beam. Activities: unicycle, watercraft, balance beam
+14000:14000:Places: canal urban, harbor, loading dock. Objects: Cannon, Bronze sculpture, Sculpture. Activities: sculpture, cannon, harbor
+14200:14200:Places: canal urban, downtown, ice skating rink outdoor. Objects: Skateboard, Rays and skates, Horizontal bar. Activities: skateboarding, rollerblading, and rollerskating
+14400:14400:Places: restaurant kitchen, fastfood restaurant, kitchen. Objects: Egg (Food), Tomato, Food. Activities: cooking, baking, eating
+14600:14600:Places: wet bar, kitchen, bar. Objects: Countertop, Bottle opener, Sink. Activities: drinking, cooking, cleaning
+14800:14800:Places: home office, waiting room, atrium public. Objects: Apple, Pear, Pretzel. Activities: eat, work, wait
+15000:15000:Places: coffee shop, home office, office. Objects: Laptop, Computer keyboard, Tablet computer. Activities: work, study, relax
+15200:15200:Places: art studio, art school, atrium public. Objects: Human arm, Human hand, Computer mouse. Activities: painting, drawing, sculpting
+15400:15400:Places: home office, office, clean room. Objects: Oven, Man, Oboe. Activities: playing oboe, cleaning, working at home
+15600:15600:Places: office cubicles, office, lock chamber. Objects: Briefcase, Backpack, Belt. Activities: locking up my briefcase, backpack, and belt
+15800:15800:Places: corridor, computer room, elevator door. Objects: Tap, Punching bag, Flying disc. Activities: tap, punching bag, flying disc
+16000:16000:Places: cliff, rock arch, canyon. Objects: Human leg, Human foot, Hiking equipment. Activities: hiking
+16200:16200:Places: butte, valley, ski slope. Objects: Castle, Tripod, Bowl. Activities: skiing, hiking, and camping
+16400:16400:Places: supermarket, florist shop indoor, drugstore. Objects: Plastic bag, Convenience store, Flower. Activities: shopping, work, school
+16600:16600:Places: supermarket, ice shelf, iceberg. Objects: Dairy Product, Convenience store, Refrigerator. Activities: shopping, traveling, and eating
+16800:16800:Places: florist shop indoor, supermarket, clean room. Objects: Rose, Flower, Cart. Activities: shopping, clean, rose
+17000:17000:Places: fastfood restaurant, sushi bar, kitchen. Objects: Bell pepper, Kitchen knife, Cooking spray. Activities: cooking, eating, shopping
+17200:17200:Places: restaurant kitchen, cafeteria, engine room. Objects: Cooking spray, Seafood, Gas stove. Activities: cooking, cleaning, and working with gas
+17400:17400:Places: pizzeria, fastfood restaurant, supermarket. Objects: Plastic bag, Food processor, Cooking spray. Activities: making a pizza, buying pizza, cooking pizza
+17600:17600:Places: supermarket, canal natural, pantry. Objects: Cooking spray, Food processor, Bell pepper. Activities: making a salad, cooking, shopping
+17800:17800:Places: kitchen, sushi bar, restaurant kitchen. Objects: Kitchen knife, Cooking spray, Spatula. Activities: making sushi, cooking, cleaning
+18000:18000:Places: kitchen, restaurant kitchen, restaurant. Objects: Cooking spray, Kitchen knife, Salad. Activities: cooking, cleaning, eating
+18200:18200:Places: dam, berth, supermarket. Objects: Tap, Watch, Cart. Activities: shopping, watching a movie, and eating
+18400:18400:Places: supermarket, berth, dam. Objects: Tap, Watch, Cart. Activities: shopping, watching a movie, and eating
