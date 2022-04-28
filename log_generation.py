@@ -8,7 +8,7 @@ import yt_dlp
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
 
-from embeddings import VectorSearch
+from embeddings import VectorSearch, FaissIndex
 
 
 def download_youtube(url, parent_dir="."):
@@ -74,32 +74,41 @@ def clean_response(act_text):
     return list(map(strip_punctuation, no_spaces))[:3]
 
 
-def log_activity_from_image(image_file, vlm, llm, vs):
+def log_activity_from_image(image_file, frame, vlm, llm, vs, fi):
     img_embed = vlm.get_image_emb(image_file)
-    zs, fs = vs.prompt_activities(img_embed, 3, one_shot=True)
+    fi.add(img_embed, [frame])
+    zs, places, objects = vs.prompt_activities(img_embed, 3)
 
-    kwargs = {
-        "top_p": 0.9,
-        "temperature": 1.2,
-        "max_new_tokens": 20,
-        "return_full_text": False,
-    }
-    activities_raw = llm(fs, **kwargs)
+    # kwargs = {
+    #     "top_p": 0.9,
+    #     "temperature": 1.2,
+    #     "max_new_tokens": 20,
+    #     "return_full_text": False,
+    # }
+    activities_raw = llm(zs)
     act_text = activities_raw[0]["generated_text"].lower()
     activities_clean = clean_response(act_text)
 
-    log = f'{zs} {", ".join(activities_clean)}'
+    log = (
+        f"{frame}:"
+        f"Places: {', '.join(places)}. "
+        f"Objects: {', '.join(objects)}. "
+        f"Activities: {', '.join(activities_clean)}"
+    )
+    # log = f'{zs} {", ".join(activities_clean)}'
     return log
 
 
 def generate_log(log_path, images_path, vlm, llm):
     vs = VectorSearch()
+    fi = FaissIndex(768, f"{images_path}/video.index")
+    fi.reset()
     with open(log_path, "w") as f:
 
         for image in tqdm(sorted(glob.glob(f"{images_path}/*.jpg"))):
             video_name, timestamp, frame = Path(image).stem.split("_")
             try:
-                log = log_activity_from_image(image, vlm, llm, vs)
+                log = log_activity_from_image(image, frame, vlm, llm, vs, fi)
                 print(log)
                 f.write(f"{frame}:{log}\n")
             except Exception as e:

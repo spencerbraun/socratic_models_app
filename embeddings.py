@@ -13,7 +13,7 @@ class FaissIndex:
         self,
         embedding_size=None,
         faiss_index_location=None,
-        indexer=faiss.IndexFlatL2,
+        indexer=faiss.IndexFlatIP,
     ):
 
         if embedding_size or faiss_index_location:
@@ -115,27 +115,29 @@ class VectorSearch:
         objects = self.top_objects(query_vec, k=k)
         place_str = f"Places: {', '.join(places)}. "
         object_str = f"Objects: {', '.join(objects)}. "
-        act_str = "Activities: "
+
+        act_str = "I might be doing these 3 activities: "
 
         zs = place_str + object_str + act_str
 
         example = (
-            "Places: kitchen, stove top. Objects: croissant, coffee maker. "
-            "Activities: eating, making breakfast, grinding coffee, boiling water, drinking coffee.\n "
+            "Places: kitchen. Objects: coffee maker. "
+            f"{act_str}: eating, making breakfast, grinding coffee.\n "
         )
         fs = example + place_str + object_str + act_str
         if one_shot:
             return (zs, fs)
 
-        return (zs,)
+        return zs, places, objects
 
-    def prompt_summary(self, query_vec, activity, k=5):
+    def prompt_summary(self, state_history: list, k=5):
 
-        places = self.top_places(query_vec, k=k)
-        objects = self.top_objects(query_vec, k=k)
-
-        place_string = f"I am in a {', '.join(places)}. "
-        objects_string = f"I see a {', '.join(objects)}. "
-        activities_string = f"I am {activity}. "
-        question = "Question: What am I doing? Answer: I am most likely"
-        return place_string + objects_string + activities_string + question
+        rec_strings = ["Event log:"]
+        for rec in state_history:
+            rec_strings.append(
+                f"Places: {', '.join(rec.places)}. "
+                f"Objects: {', '.join(rec.objects)}. "
+                f"Activities: {', '.join(rec.activities)} "
+            )
+        question = "How would you summarize these events in a few full sentences? "
+        return "\n".join(rec_strings) + "\n" + question

@@ -1,11 +1,7 @@
 import json
-import os
-import yaml
 from PIL import Image
 
 import requests
-import torch
-import transformers
 from transformers import CLIPProcessor, CLIPModel
 
 from embeddings import logger
@@ -25,6 +21,10 @@ class HuggingFaceHosted:
         API_URL = f"https://api-inference.huggingface.co/models/{self.model_id}"
         response = requests.request("POST", API_URL, headers=headers, data=data)
         return json.loads(response.content.decode("utf-8"))
+
+    def fill_mask(self, text):
+        data = json.dumps({"inputs": text})
+        return self.query(data)
 
     def text_generation(self, text, **parameters):
         payload = {
@@ -87,3 +87,25 @@ class GPTJ(HuggingFaceHosted):
 
     def __repr__(self):
         return f"GPTJ Hosted <{self.model_id}>"
+
+
+class MaskEncoder(HuggingFaceHosted):
+    def __init__(self, model_id="roberta-large", api_token=HF_TOKEN, verbose=False):
+        super().__init__(model_id, api_token, verbose=verbose)
+
+    def __call__(self, text):
+        return self.fill_mask(text)
+
+    def __repr__(self):
+        return f"MaskEncoder Hosted <{self.model_id}>"
+
+
+class T2T(HuggingFaceHosted):
+    def __init__(self, model_id="bigscience/T0pp", api_token=HF_TOKEN, verbose=False):
+        super().__init__(model_id, api_token, verbose=verbose)
+
+    def __call__(self, text, **parameters):
+        return self.text_generation(text, **parameters)
+
+    def __repr__(self):
+        return f"T2T Hosted <{self.model_id}>"
