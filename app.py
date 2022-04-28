@@ -40,9 +40,7 @@ if not os.path.exists(f"{video_id}"):
 search = VideoSearch(video_id, st.session_state.vlm)
 
 st.title("Video Search")
-
 query = st.text_input("Search Query", "working at my computer")
-
 images = search.search_engine(query)
 with st.expander(label="See results"):
     for image in images:
@@ -54,7 +52,10 @@ summ = Summary(video_id, st.session_state.llm)
 summaries = summ.generate_summaries()
 with st.expander(label="See results"):
     for (prompt, result) in summaries:
-        st.table((prompt, result))
+        st.markdown('*Event Log*')
+        st.write(prompt)
+        st.markdown('*Summary*')
+        st.write(result)
 
 
 st.title("Video Event Log")
