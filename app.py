@@ -29,12 +29,27 @@ with col2:
 
 if not os.path.exists(f"{video_id}"):
     st.write("Video not found locally. Downloading may take several minutes. Continue?")
-    if st.button("Download"):
-        download_youtube(url)
-        extract_video_frames(
-            f"{video_id}/{video_id}.mp4", dims=(600, 400), sampling_rate=100
-        )
-        generate_log(f"{video_id}/history.txt", f"{video_id}", vlm, llm)
+
+    click = st.button("Download")
+    if not click:
+        st.stop()
+
+    st.success("Downloading...")
+    download_youtube(url)
+    st.write("Extracting frames...")
+    extract_video_frames(
+        f"{video_id}/{video_id}.mp4", dims=(600, 400), sampling_rate=100
+    )
+    st.write("Generating log...")
+    generate_log(
+        f"{video_id}/history.txt",
+        f"{video_id}",
+        st.session_state.vlm,
+        st.session_state.llm,
+    )
+    refresh = st.button("Click to refresh")
+    if not refresh:
+        st.stop()
 
 
 search = VideoSearch(video_id, st.session_state.vlm)
@@ -52,9 +67,9 @@ summ = Summary(video_id, st.session_state.llm)
 summaries = summ.generate_summaries()
 with st.expander(label="See results"):
     for (prompt, result) in summaries:
-        st.markdown('*Event Log*')
+        st.markdown("*Event Log*")
         st.write(prompt)
-        st.markdown('*Summary*')
+        st.markdown("*Summary*")
         st.write(result)
 
 
