@@ -2,7 +2,7 @@ transformers
 faiss-cpu
 yt_dlp
 nltk
-opencv-python
+opencv-python-headless
 torch
 tqdm
 streamlit
