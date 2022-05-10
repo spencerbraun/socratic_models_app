@@ -1,0 +1,8 @@
+transformers
+faiss-cpu
+yt_dlp
+nltk
+opencv-python
+torch
+tqdm
+streamlit
