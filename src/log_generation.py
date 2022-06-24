@@ -11,7 +11,7 @@ from tqdm import tqdm
 from embeddings import VectorSearch, FaissIndex
 
 
-def download_youtube(url, parent_dir="."):
+def download_youtube(url, parent_dir=".."):
     def extract_youtube_id(url):
         return url.split("watch?v=")[-1]
 

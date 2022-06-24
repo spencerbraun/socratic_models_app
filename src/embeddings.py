@@ -95,7 +95,7 @@ class VectorSearch:
 
     def load(self, index_name):
         return FaissIndex(
-            faiss_index_location=f"faiss_indices/{index_name}.index",
+            faiss_index_location=f"../faiss_indices/{index_name}.index",
         )
 
     def top_places(self, query_vec, k=5):

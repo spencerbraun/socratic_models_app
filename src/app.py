@@ -27,7 +27,7 @@ with col1:
 with col2:
     st.video(url)
 
-if not os.path.exists(f"{video_id}"):
+if not os.path.exists(f"../{video_id}"):
     st.write("Video not found locally. Downloading may take several minutes. Continue?")
 
     click = st.button("Download")
@@ -38,12 +38,12 @@ if not os.path.exists(f"{video_id}"):
     download_youtube(url)
     st.write("Extracting frames...")
     extract_video_frames(
-        f"{video_id}/{video_id}.mp4", dims=(600, 400), sampling_rate=100
+        f"../{video_id}/{video_id}.mp4", dims=(600, 400), sampling_rate=100
     )
     st.write("Generating log...")
     generate_log(
-        f"{video_id}/history.txt",
-        f"{video_id}",
+        f"../{video_id}/history.txt",
+        f"../{video_id}",
         st.session_state.vlm,
         st.session_state.llm,
     )
@@ -52,7 +52,7 @@ if not os.path.exists(f"{video_id}"):
         st.stop()
 
 
-search = VideoSearch(video_id, st.session_state.vlm)
+search = VideoSearch(f"../{video_id}", st.session_state.vlm)
 
 st.title("Video Search")
 query = st.text_input("Search Query", "working at my computer")
@@ -63,7 +63,7 @@ with st.expander(label="See results"):
 
 
 st.title("Event Summaries")
-summ = Summary(video_id, st.session_state.llm)
+summ = Summary(f"../{video_id}", st.session_state.llm)
 summaries = summ.generate_summaries()
 with st.expander(label="See results"):
     for (prompt, result) in summaries:
@@ -74,5 +74,5 @@ with st.expander(label="See results"):
 
 
 st.title("Video Event Log")
-with open(f"{video_id}/history.txt", "r") as f:
+with open(f"../{video_id}/history.txt", "r") as f:
     st.text(f.read())

@@ -15,7 +15,7 @@ def main(file, index_type):
 
     index = FaissIndex(
         embedding_size=768,
-        faiss_index_location=f"faiss_indices/{index_type}.index",
+        faiss_index_location=f"../faiss_indices/{index_type}.index",
         indexer=faiss.IndexFlatIP,
     )
     index.reset()
